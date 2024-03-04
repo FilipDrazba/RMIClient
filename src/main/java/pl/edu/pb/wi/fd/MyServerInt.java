@@ -2,9 +2,10 @@ package pl.edu.pb.wi.fd;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 public interface MyServerInt extends Remote {
-    String getDescription(String text) throws RemoteException;
+    List<String> findAllByName(String name) throws RemoteException;
 
-    Double add(Double firstValue, Double secondValue) throws RemoteException;
+    List<String> findAll() throws RemoteException;
 }

@@ -1,7 +1,7 @@
 package pl.edu.pb.wi.fd;
 
-import java.math.BigDecimal;
 import java.rmi.Naming;
+import java.util.List;
 
 public class MyClientMain {
     public static void main(String[] args) {
@@ -10,12 +10,13 @@ public class MyClientMain {
         try {
             MyServerInt myRemoteObject = (MyServerInt) Naming.lookup("//localhost/ABC");
 
-            Double firstValue = 1d;
-            Double secondValue = 2d;
-            Double result = myRemoteObject.add(firstValue, secondValue);
+            List<String> result = myRemoteObject.findAll();
 
-            System.out.println("Wysłano do servera: " + firstValue + " + " + secondValue);
-            System.out.println("Otrzymana z serwera odpowiedź: " + result);
+//            System.out.println("Wysłano do servera: ");
+            System.out.println("Otrzymana z serwera odpowiedź FindAll: " + result);
+
+            List<String> result2 = myRemoteObject.findAllByName("A");
+            System.out.println("Otrzymana z serwera odpowiedź FindByName(\"A\"): " + result2);
         } catch (Exception e) {
             e.printStackTrace();
         }
